@@ -1,0 +1,8 @@
+{
+  "name": "Raízes da Ilha — Turismo no mangue",
+  "description": "Passeios de barco, hospedagem, restaurante e pacotes completos entre natureza, mangue e cultura local.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

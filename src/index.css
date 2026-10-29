@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+:root {
+  --g: #1f3d2e;
+  --gd: #142a20;
+  --gm: #5a6b3a;
+  --br: #6b4a2f;
+  --sand: #e9dfc8;
+  --off: #faf7f0;
+  --ink: #1d2a22;
+  --water: #7fb3b0;
+  --card: #ffffff;
+  --line: #e4dccb;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --off: #101a14;
+    --ink: #ece6d6;
+    --card: #18261d;
+    --line: #2a3b30;
+    --sand: #223226;
+  }
+}
+
+:root[data-theme="dark"] {
+  --off: #101a14;
+  --ink: #ece6d6;
+  --card: #18261d;
+  --line: #2a3b30;
+  --sand: #223226;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--off);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  line-height: 1.15;
+}
+
+/* Custom UI buttons matching Raízes da Ilha branding */
+.btn-primary {
+  background-color: #c9a56a;
+  color: #1a1208;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background-color: #dcb97c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(201, 165, 106, 0.35);
+}
+
+.btn-outline {
+  border: 1px solid #f3eddc;
+  color: #f3eddc;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.btn-green {
+  background-color: var(--g);
+  color: #ffffff;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-green:hover {
+  background-color: var(--gd);
+  transform: translateY(-2px);
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
