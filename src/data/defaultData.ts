@@ -1,62 +1,67 @@
 import { AppData } from '../types';
+import { WHATSAPP_CONFIG } from '../config/whatsapp';
+import heroSaoLuisImg from '../assets/images/hero_sao_luis_casaroes_1795279163440.jpg';
+import sobreCentroImg from '../assets/images/sobre_centro_historico_1795279163123.jpg';
+import experienciasIlhaImg from '../assets/images/experiencias_ilha_por_do_sol_1795279163951.jpg';
 
 export const DEFAULT_DATA: AppData = {
   settings: {
     name: 'Raízes da Ilha',
-    whatsapp: '5598988001122',
+    whatsapp: WHATSAPP_CONFIG.officialNumber,
+    whatsappAutoRedirect: true,
     whatsappDefaultMsg: 'Olá! Gostaria de mais informações sobre o Raízes da Ilha.',
     instagram: 'https://instagram.com/raizesdailha',
     facebook: 'https://facebook.com/raizesdailha',
-    tiktok: '',
-    youtube: '',
+    tiktok: 'https://tiktok.com/@raizesdailha',
+    youtube: 'https://youtube.com/@raizesdailha',
     email: 'contato@raizesdailha.com.br',
-    address: 'Ilha dos Guarás — Polo Ecoturístico dos Manguezais, Maranhão / Pará',
+    address: 'São Luís — Maranhão, Brasil',
 
     // Hero
-    heroBadge: 'Raízes da Ilha • Ecoturismo de Vivência',
-    heroTitle: 'Viva a ilha. Sinta as raízes.',
-    heroSub: 'Uma experiência completa entre natureza, sabores, hospedagem e o encanto das águas calmas do manguezal.',
-    heroImage: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80',
-    heroCta1Text: 'Conheça nossos pacotes',
-    heroCta1Link: '#pacotes',
-    heroCta2Text: 'Fale conosco',
+    heroBadge: 'Raízes da Ilha • São Luís – MA',
+    heroTitle: 'Raízes da Ilha',
+    heroSub: 'Descubra São Luís de um jeito único, conectando história, cultura e natureza.',
+    heroImage: heroSaoLuisImg,
+    heroCta1Text: 'Explore a Ilha',
+    heroCta1Link: '#experiencias',
+    heroCta2Text: 'Reserve sua visita',
     heroScrollText: 'Role para explorar',
 
     // About
-    aboutEyebrow: 'Sobre nós',
-    aboutTitle: 'Uma experiência que começa muito antes do embarque.',
-    aboutText: 'O Raízes da Ilha nasceu do amor pela nossa terra e pela rica biodiversidade dos manguezais. Oferecemos um turismo de vivência que valoriza a cultura ribeirinha, a gastronomia com ingredientes frescos pescados no dia e a preservação ambiental. Aqui, o tempo desacelera no ritmo das marés para você se reconectar com o que é essencial.',
-    aboutImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
-    aboutChips: '🚤 Passeio de barco\n🏡 Hospedagem\n🍽️ Gastronomia\n🌿 Natureza\n📍 Experiências locais',
-    aboutBadgeTitle: 'Turismo Consciente',
-    aboutBadgeText: 'Preservação dos manguezais e valorização da comunidade.',
+    aboutEyebrow: 'Sobre o projeto',
+    aboutTitle: 'Da proposta à página publicada',
+    aboutText: 'A Raízes da Ilha nasceu para valorizar o que há de mais autêntico em São Luís: sua história, seu povo e suas raízes.\n\nAqui, você encontra roteiros, cultura, gastronomia e muito mais, tudo pensado para te conectar com a essência da nossa ilha.',
+    aboutImage: sobreCentroImg,
+    aboutChips: '📸 Roteiros Turísticos\n🍽️ Gastronomia\n🏛️ Cultura\n📍 Natureza',
+    aboutBadgeTitle: 'Patrimônio & Natureza',
+    aboutBadgeText: 'Vivências autênticas pelo Centro Histórico, cultura e águas da ilha.',
 
     // Packages
     packagesEyebrow: 'Experiências completas',
     packagesTitle: 'Nossos Pacotes',
-    packagesSub: 'Roteiros planejados para você vivenciar o melhor da ilha com conforto, segurança e sabor.',
+    packagesSub: 'Roteiros planejados para você vivenciar o melhor da ilha com conforto, segurança e sabor. Deslize nas fotos para ver mais!',
 
     // Tours
     tourEyebrow: 'Passeio de barco',
     tourTitle: 'Descubra a ilha por outro ângulo.',
     tourSub: 'Navegações calmas pelos igarapés, contemplação da fauna e paradas estratégicas nos bancos de areia.',
     tourBadge: 'Embarcação Segura & Guiada',
-    tourImage: 'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=1200&q=80',
+    tourImage: experienciasIlhaImg,
 
     // Stays
     stayEyebrow: 'Hospedagem & Conforto',
     stayTitle: 'Seu refúgio na ilha.',
-    staySub: 'Desperte com o cantar dos pássaros e adormeça com o som tranquilo das águas do mangue.',
+    staySub: 'Desperte com o cantar dos pássaros e adormeça com o som tranquilo das águas da ilha. Deslize para ver todas as fotos do espaço!',
 
     // Food
-    foodEyebrow: 'Culinária Caiçara & Regional',
+    foodEyebrow: 'Gastronomia Maranhense',
     foodTitle: 'Sabores que fazem parte da experiência.',
-    foodSub: 'Ingredientes do dia colhidos na maré e preparados com temperos ancestrais que contam a história da nossa terra.',
+    foodSub: 'Ingredientes frescos do dia e receitas tradicionais que contam a história da nossa terra.',
 
     // Gallery
     galleryEyebrow: 'Galeria de Fotos',
     galleryTitle: 'Momentos na ilha',
-    gallerySub: 'Cores vivas, águas serenas e a beleza pura do ecossistema dos manguezais.',
+    gallerySub: 'Casarões coloniais, pôr do sol na orla, sabores da terra e as belezas naturais de São Luís e da Raposa.',
 
     // Testimonials
     testEyebrow: 'Depoimentos',
@@ -65,19 +70,19 @@ export const DEFAULT_DATA: AppData = {
 
     // Instagram
     instagramTitle: 'Continue vivendo o Raízes da Ilha.',
-    instagramSub: 'Acompanhe o dia a dia nos manguezais, fotos exclusivas da vida selvagem e histórias da nossa comunidade.',
+    instagramSub: 'Acompanhe o dia a dia na ilha, fotos exclusivas e histórias da nossa comunidade.',
     instagramCta: 'Seguir no Instagram',
 
     // Contact
     contactEyebrow: 'Contato & Localização',
     contactTitle: 'Vamos planejar sua viagem',
-    contactSub: 'Estamos à disposição para tirar dúvidas, verificar disponibilidades de maré e formatar o melhor pacote para você e sua família.',
+    contactSub: 'Estamos à disposição para tirar dúvidas, verificar disponibilidades de maré e formatar o melhor roteiro para você e sua família.',
     contactCta: 'Enviar mensagem no WhatsApp',
 
     // Footer
-    footerText: 'Ecoturismo com raízes na natureza, na tranquilidade das águas e na cultura local.',
+    footerText: 'Descubra São Luís e a ilha de um jeito único, conectando história, cultura e natureza.',
     footerCopyright: 'Todos os direitos reservados.',
-    footerSub: 'Ecoturismo e conservação ambiental nos manguezais',
+    footerSub: 'São Luís — Maranhão, Brasil',
   },
   packages: [
     {
@@ -90,7 +95,13 @@ export const DEFAULT_DATA: AppData = {
       preco: 1450,
       promo: 1250,
       ctaText: 'Reservar pelo WhatsApp',
-      foto: 'https://images.unsplash.com/photo-1510414842594-a61752af3302?auto=format&fit=crop&w=900&q=80',
+      foto: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=900&q=80',
+      ],
       ordem: 1,
       ativo: true,
     },
@@ -105,6 +116,11 @@ export const DEFAULT_DATA: AppData = {
       promo: 360,
       ctaText: 'Reservar pelo WhatsApp',
       foto: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=900&q=80',
+      ],
       ordem: 2,
       ativo: true,
     },
@@ -119,6 +135,11 @@ export const DEFAULT_DATA: AppData = {
       promo: '',
       ctaText: 'Reservar pelo WhatsApp',
       foto: 'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=900&q=80',
+      ],
       ordem: 3,
       ativo: true,
     },
@@ -135,7 +156,13 @@ export const DEFAULT_DATA: AppData = {
       info: 'Embarcação com motor silencioso que não assusta a fauna nativa. Fornecemos coletes, água mineral e frutas.',
       preco: 150,
       ctaText: 'Reservar passeio de barco',
-      foto: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
+      foto: experienciasIlhaImg,
+      fotos: [
+        experienciasIlhaImg,
+        heroSaoLuisImg,
+        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=1200&q=80',
+      ],
       ordem: 1,
       ativo: true,
     },
@@ -151,6 +178,11 @@ export const DEFAULT_DATA: AppData = {
       info: 'Check-in a partir das 14h / Check-out até às 12h. Traslado de barco do píer incluso.',
       ctaText: 'Consultar disponibilidade',
       foto: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80',
+      ],
       ordem: 1,
       ativo: true,
     },
@@ -164,6 +196,10 @@ export const DEFAULT_DATA: AppData = {
       info: 'Diária com café da manhã artesanal com pães caseiros e tapiocas quentinhas.',
       ctaText: 'Consultar disponibilidade',
       foto: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80',
+      ],
       ordem: 2,
       ativo: true,
     },
@@ -176,6 +212,10 @@ export const DEFAULT_DATA: AppData = {
       categoria: 'Pratos Principais',
       preco: 140,
       foto: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80',
+      ],
       ordem: 1,
       ativo: true,
     },
@@ -186,6 +226,9 @@ export const DEFAULT_DATA: AppData = {
       categoria: 'Entradas & Petiscos',
       preco: 42,
       foto: 'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80',
+      ],
       ordem: 2,
       ativo: true,
     },
@@ -196,6 +239,9 @@ export const DEFAULT_DATA: AppData = {
       categoria: 'Pratos Principais',
       preco: 115,
       foto: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=80',
+      ],
       ordem: 3,
       ativo: true,
     },
@@ -206,6 +252,9 @@ export const DEFAULT_DATA: AppData = {
       categoria: 'Bebidas & Coquetéis',
       preco: 28,
       foto: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80',
+      ],
       ordem: 4,
       ativo: true,
     },
@@ -213,27 +262,27 @@ export const DEFAULT_DATA: AppData = {
   gallery: [
     {
       _id: 'gal-1',
-      foto: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-      titulo: 'Labirinto de Igarapés',
-      descricao: 'Navegação silenciosa sob a copa do manguezal vermelho.',
+      foto: heroSaoLuisImg,
+      titulo: 'Casarões Coloniais na Orla de São Luís',
+      descricao: 'Entardecer dourado entre as palmeiras imperiais e a arquitetura histórica da ilha.',
       principal: true,
       ordem: 1,
       ativo: true,
     },
     {
       _id: 'gal-2',
-      foto: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
-      titulo: 'Banco de Areia Deserto',
-      descricao: 'Parada perfeita na maré baixa para banho de mar em águas mornas.',
+      foto: sobreCentroImg,
+      titulo: 'Ruas Históricas e Azulejaria',
+      descricao: 'Cores vivas e casarões tombados do Centro Histórico de São Luís.',
       principal: false,
       ordem: 2,
       ativo: true,
     },
     {
       _id: 'gal-3',
-      foto: 'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?auto=format&fit=crop&w=1200&q=80',
-      titulo: 'Revoada ao Entardecer',
-      descricao: 'O espetáculo do céu tingido de vermelho e dourado ao pôr do sol.',
+      foto: experienciasIlhaImg,
+      titulo: 'Pôr do Sol no Forte Costeiro',
+      descricao: 'O encontro do mar maranhense com a história viva da ilha ao entardecer.',
       principal: false,
       ordem: 3,
       ativo: true,
@@ -291,6 +340,252 @@ export const DEFAULT_DATA: AppData = {
       texto: 'Dormir no bangalô ouvindo o movimento suave da maré é pura terapia. O atendimento é caloroso e cheio de carinho em cada detalhe. Voltaremos com certeza!',
       nota: 5,
       data: 'Novembro de 2025',
+      ordem: 3,
+      ativo: true,
+    },
+  ],
+  experienceCategories: [
+    {
+      id: 'roteiros',
+      title: 'Roteiros Turísticos',
+      subtitle: 'Passeios imperdíveis',
+      modalTitle: 'Roteiros Turísticos',
+      modalSubtitle: 'Passeios guiados por São Luís, igarapés e bancos de areia da ilha.',
+    },
+    {
+      id: 'gastronomia',
+      title: 'Gastronomia',
+      subtitle: 'Sabores da nossa terra',
+      modalTitle: 'Gastronomia Maranhense',
+      modalSubtitle: 'Moquecas, frutos do mar frescos e sabores autênticos da nossa terra.',
+    },
+    {
+      id: 'cultura',
+      title: 'Cultura',
+      subtitle: 'Nossa história viva',
+      modalTitle: 'Cultura & Patrimônio',
+      modalSubtitle: 'Casarões coloniais, azulejaria histórica e a essência viva do Maranhão.',
+    },
+    {
+      id: 'natureza',
+      title: 'Natureza',
+      subtitle: 'Belezas naturais únicas',
+      modalTitle: 'Natureza & Refúgios',
+      modalSubtitle: 'Pôr do sol na orla, descanso à beira d’água e reservas ecológicas.',
+    },
+  ],
+  experienceItems: [
+    // Roteiros Turísticos
+    {
+      _id: 'exp-rot-1',
+      categoryId: 'roteiros',
+      nome: 'Navegação pelos Igarapés e Manguezal Vermelho',
+      subtitulo: 'Passeio de Barco',
+      descricao:
+        'Saída do píer central, entrada pelos labirintos naturais do mangue vermelho, parada na Ilha dos Pássaros, banho relaxante nas piscinas naturais e retorno acompanhando a maré.',
+      detalhe: '3 a 4 horas de navegação',
+      preco: 150,
+      foto: experienciasIlhaImg,
+      fotos: [
+        experienciasIlhaImg,
+        heroSaoLuisImg,
+        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+      ],
+      ordem: 1,
+      ativo: true,
+    },
+    {
+      _id: 'exp-rot-2',
+      categoryId: 'roteiros',
+      nome: 'Pacote Raízes Completo',
+      subtitulo: 'Roteiro Integrado',
+      descricao:
+        'Passeio exclusivo de barco pelos canais do manguezal, estadia em suíte rústica e experiência gastronômica completa com moqueca caiçara.',
+      detalhe: '3 dias / 2 noites',
+      preco: 1250,
+      foto: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=80',
+      ],
+      ordem: 2,
+      ativo: true,
+    },
+    {
+      _id: 'exp-rot-3',
+      categoryId: 'roteiros',
+      nome: 'Vivência Caiçara & Pôr do Sol',
+      subtitulo: 'Dia na Ilha',
+      descricao:
+        'Dia inteiro de navegação calma, banho em banco de areia deserto, almoço típico da ilha e observação da revoada dos guarás ao entardecer.',
+      detalhe: '1 dia (09h às 18h)',
+      preco: 360,
+      foto: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=900&q=80',
+      ],
+      ordem: 3,
+      ativo: true,
+    },
+
+    // Gastronomia
+    {
+      _id: 'exp-gas-1',
+      categoryId: 'gastronomia',
+      nome: 'Moqueca Raízes da Ilha',
+      subtitulo: 'Pratos Principais',
+      descricao:
+        'Peixe nobre pescado na manhã com camarão fresco, cozido lentamente na panela de barro com leite de coco natural, dendê suave, pirão e arroz soltinho.',
+      detalhe: 'Serve 2 pessoas',
+      preco: 140,
+      foto: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80',
+      ],
+      ordem: 1,
+      ativo: true,
+    },
+    {
+      _id: 'exp-gas-2',
+      categoryId: 'gastronomia',
+      nome: 'Casquinha de Caranguejo do Mangue',
+      subtitulo: 'Entradas & Petiscos',
+      descricao:
+        'Carne desfiada de caranguejo temperada com ervas locais, cebola roxa e manteiga de garrafa, com farofa crocante de banana-da-terra.',
+      detalhe: 'Entrada individual',
+      preco: 42,
+      foto: 'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80',
+      ],
+      ordem: 2,
+      ativo: true,
+    },
+    {
+      _id: 'exp-gas-3',
+      categoryId: 'gastronomia',
+      nome: 'Peixe Inteiro na Folha de Bananeira',
+      subtitulo: 'Pratos Principais',
+      descricao:
+        'Robalo ou tainha fresca assada na brasa com marinada de limão-cravo, acompanhada de vinagrete de feijão fradinho e mandioca na manteiga.',
+      detalhe: 'Assado na brasa',
+      preco: 115,
+      foto: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=80',
+      ],
+      ordem: 3,
+      ativo: true,
+    },
+    {
+      _id: 'exp-gas-4',
+      categoryId: 'gastronomia',
+      nome: 'Drink Manguezal Suave',
+      subtitulo: 'Bebidas & Coquetéis',
+      descricao:
+        'Cachaça artesanal envelhecida em barril de umburana, calda de cajá fresco, toque de gengibre e espuma cremosa de capim-santo.',
+      detalhe: 'Coquetel autoral',
+      preco: 28,
+      foto: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80',
+      ],
+      ordem: 4,
+      ativo: true,
+    },
+
+    // Cultura
+    {
+      _id: 'exp-cul-1',
+      categoryId: 'cultura',
+      nome: 'Casarões Coloniais na Orla de São Luís',
+      subtitulo: 'Patrimônio Histórico',
+      descricao:
+        'Entardecer dourado entre as palmeiras imperiais e os sobrados históricos tombados da capital maranhense.',
+      detalhe: 'Centro Histórico',
+      preco: '',
+      foto: heroSaoLuisImg,
+      fotos: [heroSaoLuisImg],
+      ordem: 1,
+      ativo: true,
+    },
+    {
+      _id: 'exp-cul-2',
+      categoryId: 'cultura',
+      nome: 'Ruas Históricas e Azulejaria Portuguesa',
+      subtitulo: 'Memória & Arte',
+      descricao:
+        'Caminhos de pedra, fachadas coloridas revestidas de azulejos seculares e histórias vivas da cultura ludovicense.',
+      detalhe: 'Visitação guiada',
+      preco: '',
+      foto: sobreCentroImg,
+      fotos: [sobreCentroImg],
+      ordem: 2,
+      ativo: true,
+    },
+    {
+      _id: 'exp-cul-3',
+      categoryId: 'cultura',
+      nome: 'Forte Costeiro e Saberes Tradicionais',
+      subtitulo: 'Tradição Maranhense',
+      descricao:
+        'Encontro entre a herança arquitetônica à beira-mar, música, artesanato e hospitalidade das comunidades locais.',
+      detalhe: 'Roteiro cultural',
+      preco: '',
+      foto: experienciasIlhaImg,
+      fotos: [experienciasIlhaImg],
+      ordem: 3,
+      ativo: true,
+    },
+
+    // Natureza
+    {
+      _id: 'exp-nat-1',
+      categoryId: 'natureza',
+      nome: 'Bangalô Raízes do Mangue',
+      subtitulo: 'Refúgio Ecológico',
+      descricao:
+        'Construção sustentável em madeira sobre palafitas, com varanda panorâmica, rede e vista direta para o balanço das marés.',
+      detalhe: 'Casal ou até 3 pessoas',
+      preco: 380,
+      foto: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80',
+      ],
+      ordem: 1,
+      ativo: true,
+    },
+    {
+      _id: 'exp-nat-2',
+      categoryId: 'natureza',
+      nome: 'Suíte Refúgio das Águas',
+      subtitulo: 'Hospedagem & Descanso',
+      descricao:
+        'Repouso tranquilo após os passeios de barco, com decoração rústica artesanal, deck privativo e brisa constante.',
+      detalhe: 'Casal',
+      preco: 320,
+      foto: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80',
+      ],
+      ordem: 2,
+      ativo: true,
+    },
+    {
+      _id: 'exp-nat-3',
+      categoryId: 'natureza',
+      nome: 'Santuário dos Guarás & Bancos de Areia',
+      subtitulo: 'Ecoturismo',
+      descricao:
+        'Observação silenciosa de aves nativas no manguezal vermelho e mergulho nas águas calmas de bancos de areia naturais.',
+      detalhe: 'Saídas conforme a maré',
+      preco: '',
+      foto: 'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=900&q=80',
+      fotos: [
+        'https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?auto=format&fit=crop&w=900&q=80',
+      ],
       ordem: 3,
       ativo: true,
     },

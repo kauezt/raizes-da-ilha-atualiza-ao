@@ -1,7 +1,7 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { Utensils } from 'lucide-react';
 import { SectionEditBadge } from './SectionEditBadge';
+import { ImageCarousel } from './ImageCarousel';
 
 export const RestaurantSection: React.FC = () => {
   const { settings, activeDishes, formatCurrency } = useApp();
@@ -30,7 +30,7 @@ export const RestaurantSection: React.FC = () => {
             Nenhum prato cadastrado no momento.{' '}
             <button
               type="button"
-              onClick={() => window.location.hash = '#admin'}
+              onClick={() => (window.location.hash = '#admin')}
               className="text-[var(--g)] underline font-medium"
             >
               Adicionar prato ao cardápio
@@ -40,6 +40,11 @@ export const RestaurantSection: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {activeDishes.map((dish) => {
               const priceFormatted = formatCurrency(dish.preco);
+              const dishImages = (dish.fotos && dish.fotos.length > 0)
+                ? dish.fotos
+                : dish.foto
+                ? [dish.foto]
+                : [];
 
               return (
                 <article
@@ -51,23 +56,16 @@ export const RestaurantSection: React.FC = () => {
                     tab="dishes"
                     item={dish}
                     label="Editar"
-                    className="absolute top-2.5 left-2.5 shadow-md"
+                    className="absolute top-2.5 left-2.5 shadow-md z-20"
                   />
 
-                  <div className="aspect-[16/11] bg-gradient-to-tr from-[var(--g)] to-[var(--gm)] relative overflow-hidden">
-                    {dish.foto ? (
-                      <img
-                        src={dish.foto}
-                        alt={dish.nome}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-white/40">
-                        <Utensils size={28} />
-                      </div>
-                    )}
-                  </div>
+                  {/* Swipeable Photo Carousel */}
+                  <ImageCarousel
+                    images={dishImages}
+                    fallbackImage={dish.foto}
+                    alt={dish.nome}
+                    aspectRatio="aspect-[16/11]"
+                  />
 
                   <div className="p-5 flex flex-col gap-2.5 flex-1">
                     {dish.categoria && (

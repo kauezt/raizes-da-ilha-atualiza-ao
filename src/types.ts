@@ -65,6 +65,7 @@ export interface SiteSettings {
   contactSub?: string;
   contactCta?: string;
   whatsapp?: string;
+  whatsappAutoRedirect?: boolean;
   whatsappDefaultMsg?: string;
   instagram?: string;
   facebook?: string;
@@ -83,6 +84,7 @@ export interface PackageItem {
   _id: string;
   nome: string;
   foto?: string;
+  fotos?: string[];
   descricao: string;
   duracao: string;
   pessoas: string;
@@ -99,6 +101,7 @@ export interface TourItem {
   _id: string;
   nome: string;
   foto?: string;
+  fotos?: string[];
   duracao: string;
   roteiro: string;
   capacidade: string;
@@ -116,6 +119,7 @@ export interface StayItem {
   _id: string;
   nome: string;
   foto?: string;
+  fotos?: string[];
   descricao: string;
   capacidade: string;
   comodidades: string;
@@ -131,6 +135,7 @@ export interface DishItem {
   _id: string;
   nome: string;
   foto?: string;
+  fotos?: string[];
   descricao: string;
   categoria: string;
   preco: number | string;
@@ -162,6 +167,30 @@ export interface TestimonialItem {
   _demo?: boolean;
 }
 
+export type ExperienceCategoryId = 'roteiros' | 'gastronomia' | 'cultura' | 'natureza';
+
+export interface ExperienceCategoryConfig {
+  id: ExperienceCategoryId;
+  title: string;
+  subtitle: string;
+  modalTitle: string;
+  modalSubtitle: string;
+}
+
+export interface ExperienceCategoryItem {
+  _id: string;
+  categoryId: ExperienceCategoryId;
+  nome: string;
+  subtitulo?: string;
+  descricao: string;
+  detalhe?: string;
+  preco?: number | string;
+  foto?: string;
+  fotos?: string[];
+  ordem: number;
+  ativo: boolean;
+}
+
 export interface AppData {
   settings: SiteSettings;
   packages: PackageItem[];
@@ -170,4 +199,6 @@ export interface AppData {
   dishes: DishItem[];
   gallery: GalleryItem[];
   tests: TestimonialItem[];
+  experienceCategories?: ExperienceCategoryConfig[];
+  experienceItems?: ExperienceCategoryItem[];
 }

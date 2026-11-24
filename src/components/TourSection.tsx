@@ -2,12 +2,19 @@ import React from 'react';
 import { useApp } from '../context/AppContext';
 import { Anchor, MessageCircle } from 'lucide-react';
 import { SectionEditBadge } from './SectionEditBadge';
+import { ImageCarousel } from './ImageCarousel';
 
 export const TourSection: React.FC = () => {
   const { settings, activeTours, formatCurrency, getWhatsAppUrl } = useApp();
   const tour = activeTours[0] || null;
 
-  const tourImage = tour?.foto || settings.tourImage || '';
+  const tourImages = (tour?.fotos && tour.fotos.length > 0)
+    ? tour.fotos
+    : tour?.foto
+    ? [tour.foto]
+    : settings.tourImage
+    ? [settings.tourImage]
+    : [];
 
   return (
     <section id="passeio" className="py-24 bg-[#142a20] text-[#efe8d6] relative">
@@ -16,31 +23,27 @@ export const TourSection: React.FC = () => {
           <SectionEditBadge
             tab="tours"
             item={tour}
-            label="Editar Passeio (Foto, Roteiro, Preço & Horários)"
+            label="Editar Passeio (Fotos, Roteiro, Preço & Horários)"
           />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Photo */}
+          {/* Photo Carousel */}
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative group">
-              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-[#1f3d2e] to-[#5a6b3a]">
-                {tourImage ? (
-                  <img
-                    src={tourImage}
-                    alt={tour?.nome || settings.tourTitle}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-white/40">
-                    Foto do Passeio
-                  </div>
-                )}
-              </div>
-              <div className="absolute top-4 left-4 bg-[#142a20]/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#7fb3b0]/30 text-[#7fb3b0] text-xs font-semibold tracking-wider uppercase flex items-center gap-1.5">
-                <Anchor size={14} />
-                {settings.tourBadge || 'Embarcação Segura'}
+              <div className="rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-[#1f3d2e] to-[#5a6b3a]">
+                <ImageCarousel
+                  images={tourImages}
+                  fallbackImage={tour?.foto || settings.tourImage}
+                  alt={tour?.nome || settings.tourTitle}
+                  aspectRatio="aspect-square"
+                  badge={
+                    <div className="bg-[#142a20]/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#7fb3b0]/30 text-[#7fb3b0] text-xs font-semibold tracking-wider uppercase flex items-center gap-1.5 shadow-md">
+                      <Anchor size={14} />
+                      {settings.tourBadge || 'Embarcação Segura'}
+                    </div>
+                  }
+                />
               </div>
             </div>
           </div>

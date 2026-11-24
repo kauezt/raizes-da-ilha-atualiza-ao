@@ -1,77 +1,92 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
-import { PackagesSection } from './components/PackagesSection';
-import { TourSection } from './components/TourSection';
-import { StaysSection } from './components/StaysSection';
-import { RestaurantSection } from './components/RestaurantSection';
-import { GallerySection } from './components/GallerySection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { InstagramBanner } from './components/InstagramBanner';
-import { ContactSection } from './components/ContactSection';
+import { HighlightsSection } from './components/HighlightsSection';
+import { BookingQuestionnaire } from './components/BookingQuestionnaire';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp, FloatingAdminButton } from './components/FloatingButtons';
-import { Lightbox } from './components/Lightbox';
 import { AdminPanel } from './components/AdminPanel';
+import { Lightbox } from './components/Lightbox';
+import { ExperienceModal, ExperienceCategory } from './components/ExperienceModal';
 import { useApp } from './context/AppContext';
+import { ServiceOptionId } from './utils/questionnaire';
 
 export const App: React.FC = () => {
-  const { settings } = useApp();
+  const { settings, setLightboxIndex, activeGallery } = useApp();
+  const [selectedExperience, setSelectedExperience] = useState<ExperienceCategory | null>(null);
+  const [preselectedService, setPreselectedService] = useState<ServiceOptionId | null>(null);
 
-  // Synchronize document title with company name
+  // Synchronize document title and favicon with settings
   useEffect(() => {
-    document.title = `${settings.name} — Turismo no mangue`;
-  }, [settings.name]);
+    document.title = `${settings.name} — Turismo, Cultura e Natureza em São Luís`;
+    if (settings.favicon) {
+      let link = document.querySelector<HTMLLinkElement>("link[rel~='icon']");
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+      }
+      link.href = settings.favicon;
+    }
+  }, [settings.name, settings.favicon]);
 
-  // Scroll reveal animation observer
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-    );
+  const handleOpenGallery = () => {
+    if (activeGallery.length > 0) {
+      setLightboxIndex(0);
+    }
+  };
 
-    const elements = document.querySelectorAll('.reveal-on-scroll');
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  const handleIncludeInRoute = (service?: ServiceOptionId) => {
+    if (service) {
+      setPreselectedService(service);
+    }
+    const target = document.getElementById('questionario');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-[var(--off)] text-[var(--ink)] font-sans selection:bg-[#c9a56a]/30 selection:text-[var(--gd)]">
-      {/* Navigation */}
-      <Navbar />
+    <div className="min-h-screen bg-[var(--off)] text-[var(--ink)] font-sans selection:bg-[#DE952F]/30 selection:text-[var(--gd)]">
+      {/* Section 1: Header */}
+      <Navbar onOpenGallery={handleOpenGallery} />
 
-      {/* Main Sections */}
+      {/* Exact 5-band main layout matching visual reference + interactive questionnaire */}
       <main>
+        {/* Section 2: Hero */}
         <Hero />
+
+        {/* Section 3: About the Project */}
         <AboutSection />
-        <PackagesSection />
-        <TourSection />
-        <StaysSection />
-        <RestaurantSection />
-        <GallerySection />
-        <TestimonialsSection />
-        <InstagramBanner />
-        <ContactSection />
+
+        {/* Section 4: Experiences */}
+        <HighlightsSection onSelectCategory={(cat) => setSelectedExperience(cat)} />
+
+        {/* Section 5: Plan Your Experience + Interactive Questionnaire */}
+        <BookingQuestionnaire
+          preselectedService={preselectedService}
+          onClearPreselectedService={() => setPreselectedService(null)}
+        />
       </main>
 
-      {/* Footer */}
-      <Footer />
+      {/* Section 6: Footer */}
+      <Footer onOpenGallery={handleOpenGallery} />
 
-      {/* Floating Action Buttons */}
+      {/* Interactive Experience & Gallery Modals */}
+      <ExperienceModal
+        category={selectedExperience}
+        onClose={() => setSelectedExperience(null)}
+        onIncludeInRoute={handleIncludeInRoute}
+        onOpenGallery={handleOpenGallery}
+      />
+      <Lightbox />
+
+      {/* Discrete Floating Controls */}
       <FloatingWhatsApp />
       <FloatingAdminButton />
 
-      {/* Modals & Overlays */}
-      <Lightbox />
+      {/* Admin Panel */}
       <AdminPanel />
     </div>
   );

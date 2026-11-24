@@ -1,95 +1,86 @@
 @import "tailwindcss";
 
 :root {
-  --g: #1f3d2e;
-  --gd: #142a20;
-  --gm: #5a6b3a;
-  --br: #6b4a2f;
-  --sand: #e9dfc8;
-  --off: #faf7f0;
-  --ink: #1d2a22;
-  --water: #7fb3b0;
-  --card: #ffffff;
-  --line: #e4dccb;
+  --g: #32532E;
+  --gd: #243E21;
+  --gm: #40683B;
+  --br: #B74C1E;
+  --gold: #DE952F;
+  --gold-hover: #E9A33F;
+  --teal: #44757A;
+  --sand: #EDE6D1;
+  --sand-deep: #E2D9BE;
+  --off: #F6F2E4;
+  --ink: #253822;
+  --water: #44757A;
+  --card: #FAF7EE;
+  --line: #DDD4BC;
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --off: #101a14;
-    --ink: #ece6d6;
-    --card: #18261d;
-    --line: #2a3b30;
-    --sand: #223226;
-  }
-}
-
-:root[data-theme="dark"] {
-  --off: #101a14;
-  --ink: #ece6d6;
-  --card: #18261d;
-  --line: #2a3b30;
-  --sand: #223226;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 70px;
+  scroll-padding-top: 88px;
 }
 
 body {
   margin: 0;
   background-color: var(--off);
   color: var(--ink);
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Comfortaa', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  line-height: 1.15;
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+  line-height: 1.12;
 }
 
-/* Custom UI buttons matching Raízes da Ilha branding */
+.font-sans {
+  font-family: 'Comfortaa', system-ui, -apple-system, sans-serif;
+}
+
+/* Primary Ocre CTA matching reference design */
 .btn-primary {
-  background-color: #c9a56a;
-  color: #1a1208;
+  background-color: #DE952F;
+  color: #1F331C;
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover {
-  background-color: #dcb97c;
+  background-color: #E9A33F;
   transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(201, 165, 106, 0.35);
+  box-shadow: 0 6px 18px rgba(222, 149, 47, 0.35);
 }
 
 .btn-outline {
-  border: 1px solid #f3eddc;
-  color: #f3eddc;
-  background-color: transparent;
+  border: 1.5px solid #F6F2E4;
+  color: #F6F2E4;
+  background-color: rgba(50, 83, 46, 0.4);
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
 .btn-outline:hover {
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(246, 242, 228, 0.14);
 }
 
 .btn-green {
-  background-color: var(--g);
-  color: #ffffff;
+  background-color: #32532E;
+  color: #F6F2E4;
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
 .btn-green:hover {
-  background-color: var(--gd);
+  background-color: #243E21;
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(36, 62, 33, 0.25);
 }
 
 /* Animation utilities */

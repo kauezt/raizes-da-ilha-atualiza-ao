@@ -2,6 +2,7 @@ import React from 'react';
 import { useApp } from '../context/AppContext';
 import { Check, MessageCircle } from 'lucide-react';
 import { SectionEditBadge } from './SectionEditBadge';
+import { ImageCarousel } from './ImageCarousel';
 
 export const PackagesSection: React.FC = () => {
   const { settings, activePackages, formatCurrency, getWhatsAppUrl } = useApp();
@@ -21,7 +22,7 @@ export const PackagesSection: React.FC = () => {
             {settings.packagesTitle || 'Nossos Pacotes'}
           </h2>
           <p className="text-sm sm:text-base text-[var(--ink)]/80">
-            {settings.packagesSub || 'Roteiros planejados para você vivenciar o melhor da ilha com conforto, segurança e sabor.'}
+            {settings.packagesSub || 'Roteiros planejados para você vivenciar o melhor da ilha com conforto, segurança e sabor. Deslize nas fotos para ver mais!'}
           </p>
         </div>
 
@@ -30,7 +31,7 @@ export const PackagesSection: React.FC = () => {
             Nenhum pacote disponível no momento.{' '}
             <button
               type="button"
-              onClick={() => window.location.hash = '#admin'}
+              onClick={() => (window.location.hash = '#admin')}
               className="text-[var(--g)] underline font-medium"
             >
               Clique para adicionar pelo painel.
@@ -48,6 +49,12 @@ export const PackagesSection: React.FC = () => {
               const promoFormatted = pkg.promo ? formatCurrency(pkg.promo) : null;
               const ctaText = pkg.ctaText || 'Reservar pelo WhatsApp';
 
+              const packageImages = (pkg.fotos && pkg.fotos.length > 0)
+                ? pkg.fotos
+                : pkg.foto
+                ? [pkg.foto]
+                : [];
+
               return (
                 <article
                   key={pkg._id}
@@ -58,29 +65,23 @@ export const PackagesSection: React.FC = () => {
                     tab="packages"
                     item={pkg}
                     label="Editar"
-                    className="absolute top-3 left-3 shadow-md"
+                    className="absolute top-3 left-3 shadow-md z-20"
                   />
 
-                  {/* Photo Banner */}
-                  <div className="aspect-[16/10] bg-gradient-to-tr from-[var(--g)] to-[var(--gm)] relative overflow-hidden">
-                    {pkg.foto ? (
-                      <img
-                        src={pkg.foto}
-                        alt={pkg.nome}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-white/40 text-xs">
-                        Sem foto
-                      </div>
-                    )}
-                    {pkg.promo && (
-                      <div className="absolute top-3 right-3 bg-[#c9a56a] text-[#1a1208] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
-                        Oferta Especial
-                      </div>
-                    )}
-                  </div>
+                  {/* Swipeable Photo Carousel */}
+                  <ImageCarousel
+                    images={packageImages}
+                    fallbackImage={pkg.foto}
+                    alt={pkg.nome}
+                    aspectRatio="aspect-[16/10]"
+                    badge={
+                      pkg.promo ? (
+                        <div className="bg-[#c9a56a] text-[#1a1208] text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
+                          Oferta Especial
+                        </div>
+                      ) : undefined
+                    }
+                  />
 
                   {/* Body Content */}
                   <div className="p-6 flex flex-col gap-4 flex-1">

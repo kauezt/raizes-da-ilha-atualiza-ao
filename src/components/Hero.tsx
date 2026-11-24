@@ -1,73 +1,76 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { MessageCircle, Compass } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { SectionEditBadge } from './SectionEditBadge';
 
 export const Hero: React.FC = () => {
-  const { settings, getWhatsAppUrl } = useApp();
+  const { settings } = useApp();
 
   const heroBgStyle: React.CSSProperties = settings.heroImage
     ? {
-        backgroundImage: `linear-gradient(rgba(10, 26, 18, 0.65), rgba(10, 26, 18, 0.82)), url('${settings.heroImage}')`,
+        backgroundImage: `linear-gradient(90deg, #32532E 0%, rgba(50, 83, 46, 0.94) 30%, rgba(50, 83, 46, 0.48) 58%, rgba(50, 83, 46, 0.08) 100%), linear-gradient(180deg, rgba(50, 83, 46, 0.35) 0%, rgba(50, 83, 46, 0.06) 52%, rgba(50, 83, 46, 0.55) 100%), url('${settings.heroImage}')`,
       }
     : {
-        backgroundImage: `linear-gradient(160deg, #2b4d3a, #142a20 60%, #6b4a2f)`,
+        backgroundImage: `linear-gradient(135deg, #32532E, #40683B 60%, #243E21)`,
       };
+
+  const rawHeroTitle = (settings.heroTitle || settings.name || 'Raízes da Ilha').trim();
+  const isDefaultBrandHeadline = rawHeroTitle.toLowerCase() === 'raízes da ilha';
 
   return (
     <header
       id="top"
-      className="hero min-h-screen flex items-center justify-center text-[#f3eddc] bg-cover bg-center relative pt-20 pb-16"
+      className="hero min-h-[580px] sm:min-h-[650px] lg:min-h-[700px] flex items-center text-[#F6F2E4] bg-cover bg-center relative pt-28 pb-16 overflow-hidden"
       style={heroBgStyle}
     >
-      {/* Quick edit shortcut badge for Hero */}
       <SectionEditBadge
         tab="settings"
         label="Editar Hero (Textos & Foto)"
-        className="absolute top-24 right-5 sm:right-10"
+        className="absolute top-28 right-5 sm:right-10"
       />
 
-      <div className="max-w-[1160px] w-full mx-auto px-5 z-10">
-        <div className="max-w-2xl space-y-6">
-          <p className="eyebrow inline-block text-[#7fb3b0] tracking-[0.25em] text-xs uppercase font-semibold bg-[#101a14]/60 px-3.5 py-1.5 rounded-full border border-[#7fb3b0]/30 backdrop-blur-sm">
-            {settings.heroBadge || `${settings.name} • Ecoturismo de Vivência`}
-          </p>
-
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] tracking-tight font-semibold text-[#f3eddc]">
-            {settings.heroTitle}
+      <div className="max-w-[1180px] w-full mx-auto px-5 sm:px-6 z-10">
+        <div className="max-w-lg space-y-5">
+          <h1 className="font-serif text-5xl sm:text-7xl lg:text-[5.5rem] leading-[0.94] tracking-tight font-bold text-[#F6F2E4]">
+            {isDefaultBrandHeadline ? (
+              <>
+                Raízes
+                <br />
+                da Ilha
+              </>
+            ) : (
+              rawHeroTitle
+            )}
           </h1>
 
-          <p className="text-lg md:text-xl text-[#f3eddc]/90 leading-relaxed font-light max-w-xl">
-            {settings.heroSub}
+          <p className="text-sm sm:text-base lg:text-[1.05rem] text-[#F6F2E4]/92 leading-relaxed font-normal max-w-[420px]">
+            {settings.heroSub ||
+              'Descubra São Luís de um jeito único, conectando história, cultura e natureza.'}
           </p>
 
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-wrap items-center gap-4 pt-2">
             <a
-              href={settings.heroCta1Link || '#pacotes'}
-              className="btn-primary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-black/20"
+              href={settings.heroCta1Link || '#experiencias'}
+              className="btn-primary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-sm transition-all duration-200 shadow-lg shadow-black/25"
             >
-              <Compass size={18} />
-              {settings.heroCta1Text || 'Conheça nossos pacotes'}
-            </a>
-
-            <a
-              href={getWhatsAppUrl(settings.whatsappDefaultMsg || 'Olá! Gostaria de planejar minha visita ao Raízes da Ilha.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-200 hover:bg-white/10"
-            >
-              <MessageCircle size={18} />
-              {settings.heroCta2Text || 'Fale conosco'}
+              <span>{settings.heroCta1Text || 'Explore a Ilha'}</span>
+              <ArrowRight size={17} />
             </a>
           </div>
         </div>
       </div>
 
-      {/* Subtle bottom gradient & scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center text-[#f3eddc]/60 text-xs tracking-widest uppercase flex flex-col items-center gap-2 pointer-events-none">
-        <span>{settings.heroScrollText || 'Role para explorar'}</span>
-        <div className="w-5 h-8 border-2 border-[#f3eddc]/40 rounded-full flex justify-center pt-1">
-          <div className="w-1 h-2 bg-[#f3eddc]/70 rounded-full animate-bounce" />
+      {/* Left-aligned scroll mouse cue matching reference */}
+      <div className="max-w-[1180px] w-full mx-auto px-5 sm:px-6 absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-none">
+        <div className="flex items-center gap-3 text-[#F6F2E4]/75 text-xs tracking-widest uppercase">
+          <span className="w-8 h-px bg-[#F6F2E4]/45" />
+          <span className="w-px h-5 bg-[#F6F2E4]/45" />
+          <div className="w-5 h-8 border-2 border-[#F6F2E4]/65 rounded-full flex justify-center pt-1.5">
+            <div className="w-1 h-2 bg-[#DE952F] rounded-full animate-bounce" />
+          </div>
+          <span className="sr-only">
+            {settings.heroScrollText || 'Role para explorar'}
+          </span>
         </div>
       </div>
     </header>

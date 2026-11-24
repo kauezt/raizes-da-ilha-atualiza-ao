@@ -7,17 +7,17 @@ export const TestimonialsSection: React.FC = () => {
   const { settings, activeTests } = useApp();
 
   return (
-    <section className="py-24 bg-[var(--sand)] text-[var(--ink)] relative">
+    <section id="depoimentos" className="py-24 bg-[var(--sand)] text-[var(--ink)] relative">
       <div className="max-w-[1160px] mx-auto px-5">
         <div className="flex justify-end mb-4">
           <SectionEditBadge tab="tests" label="+ Adicionar / Gerenciar Depoimentos" />
         </div>
 
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <p className="eyebrow uppercase tracking-[0.2em] text-xs font-semibold text-[var(--gm)]">
+          <p className="eyebrow uppercase tracking-[0.2em] text-xs font-bold text-[#b74c1e]">
             {settings.testEyebrow || 'Depoimentos'}
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--g)]">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--g)] font-bold">
             {settings.testTitle}
           </h2>
           <p className="text-sm sm:text-base text-[var(--ink)]/80">
@@ -56,12 +56,12 @@ export const TestimonialsSection: React.FC = () => {
 
                   <div className="space-y-4">
                     {/* Stars */}
-                    <div className="flex items-center gap-1 text-[#c9a56a]">
+                    <div className="flex items-center gap-1 text-[#eb9d1f]">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
                           key={i}
                           size={18}
-                          className={i < starsCount ? 'fill-[#c9a56a]' : 'text-gray-300'}
+                          className={i < starsCount ? 'fill-[#eb9d1f]' : 'text-gray-300'}
                         />
                       ))}
                     </div>

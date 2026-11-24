@@ -2,6 +2,7 @@ import React from 'react';
 import { useApp } from '../context/AppContext';
 import { MessageCircle, Users, Sparkles, Info } from 'lucide-react';
 import { SectionEditBadge } from './SectionEditBadge';
+import { ImageCarousel } from './ImageCarousel';
 
 export const StaysSection: React.FC = () => {
   const { settings, activeStays, formatCurrency, getWhatsAppUrl } = useApp();
@@ -21,7 +22,7 @@ export const StaysSection: React.FC = () => {
             {settings.stayTitle}
           </h2>
           <p className="text-sm sm:text-base text-[var(--ink)]/80">
-            {settings.staySub || 'Desperte com o cantar dos pássaros e adormeça com o som tranquilo das águas do mangue.'}
+            {settings.staySub || 'Desperte com o cantar dos pássaros e adormeça com o som tranquilo das águas do mangue. Deslize para ver todas as fotos do espaço!'}
           </p>
         </div>
 
@@ -30,7 +31,7 @@ export const StaysSection: React.FC = () => {
             Nenhuma hospedagem cadastrada no momento.{' '}
             <button
               type="button"
-              onClick={() => window.location.hash = '#admin'}
+              onClick={() => (window.location.hash = '#admin')}
               className="text-[var(--g)] underline font-medium"
             >
               Adicionar acomodação
@@ -40,6 +41,11 @@ export const StaysSection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {activeStays.map((stay) => {
               const priceFormatted = formatCurrency(stay.preco);
+              const stayImages = (stay.fotos && stay.fotos.length > 0)
+                ? stay.fotos
+                : stay.foto
+                ? [stay.foto]
+                : [];
 
               return (
                 <article
@@ -51,24 +57,16 @@ export const StaysSection: React.FC = () => {
                     tab="stays"
                     item={stay}
                     label="Editar"
-                    className="absolute top-3 left-3 shadow-md"
+                    className="absolute top-3 left-3 shadow-md z-20"
                   />
 
-                  {/* Photo */}
-                  <div className="aspect-[16/10] bg-gradient-to-tr from-[var(--g)] to-[var(--gm)] relative overflow-hidden">
-                    {stay.foto ? (
-                      <img
-                        src={stay.foto}
-                        alt={stay.nome}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-white/40 text-xs">
-                        Sem foto
-                      </div>
-                    )}
-                  </div>
+                  {/* Swipeable Photo Carousel */}
+                  <ImageCarousel
+                    images={stayImages}
+                    fallbackImage={stay.foto}
+                    alt={stay.nome}
+                    aspectRatio="aspect-[16/10]"
+                  />
 
                   {/* Details */}
                   <div className="p-6 flex flex-col gap-4 flex-1">
